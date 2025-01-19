@@ -1,9 +1,9 @@
 import pandas as pd
 
-# File path for the Excel file
 file_path = 'test.xlsx'
 # Parameters for filtering
 search = 'amount'
+max_length = 6
 date_column = 'insert_date'
 status_column = 'status'
 status_value = 'Transaction Successfull'
@@ -17,9 +17,9 @@ data = pd.read_excel(file_path)
 if search in data.columns and date_column in data.columns and status_column in data.columns:
     # Convert 'amount' column to string and filter by length
     data[search] = data[search].astype(str)
-    ignored_rows = data[data[search].str.len() > 6]
+    ignored_rows = data[data[search].str.len() > max_length]
     ignored_rows_count = len(ignored_rows)
-    filtered_data = data[data[search].str.len() <= 6].copy()
+    filtered_data = data[data[search].str.len() <= max_length].copy()
 
     # Convert 'amount' column back to numeric
     filtered_data[search] = pd.to_numeric(filtered_data[search], errors='coerce')
@@ -37,8 +37,8 @@ if search in data.columns and date_column in data.columns and status_column in d
     total_amount = filtered_data[search].sum()
 
     # Print the result
-    print(f"Total Amount (excluding rows length > 5 and filtered by date/status): {total_amount}")
-    print(f"Number of rows ignored due to 'amount' length > 6: {ignored_rows_count}")
+    print(f"Total Amount (excluding rows length > {max_length} and filtered by date/status): {total_amount}")
+    print(f"Number of rows ignored due to 'amount' length > {max_length}: {ignored_rows_count}")
 
     # Save the filtered data to a new Excel file
     # output_file = 'filtered_data.xlsx'

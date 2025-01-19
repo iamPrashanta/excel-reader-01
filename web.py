@@ -59,8 +59,8 @@ if search in data.columns and date_column in data.columns and status_column in d
                 <head><title>Filtered Data Results</title></head>
                 <body>
                     <h1>Data Processing Results</h1>
-                    <p>Total Amount (excluding rows length > 5 and filtered by date/status): {total_amount}</p>
-                    <p>Number of rows ignored due to 'amount' length > 5 or incorrect status: {ignored_rows_count}</p>
+                    <p>Total Amount (excluding rows length > {max_length} and filtered by date/status): {total_amount}</p>
+                    <p>Number of rows ignored due to 'amount' length > {max_length} or incorrect status: {ignored_rows_count}</p>
                     <p><a href="/{ignored_rows_file}" download>Download Ignored Rows</a></p>
                 </body>
             </html>
