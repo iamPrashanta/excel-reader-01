@@ -4,14 +4,14 @@ from flask import Flask, render_template_string
 app = Flask(__name__)
 
 # File path for the Excel file
-file_path = 'transactions-by-Sharma-Traders.xlsx'
+file_path = 'your-excel-file.xlsx'
 # Parameters for filtering
 search = 'amount'
 max_length = 6
 date_column = 'insert_date'
 status_column = 'status'
 status_value = 'Transaction Successfull'
-start_date = '2023-02-01 00:00:01'
+start_date = '2024-02-01 00:00:01'
 end_date = '2024-08-31 23:59:59'
 
 # Read the Excel file
